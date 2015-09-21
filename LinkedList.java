@@ -16,7 +16,7 @@ public class Linked_List{
     }
 
     //constructor for non-empty Linked List
-    public Linked_list(Node node){
+    public Linked_List(Node node){
         head = node;
     }
 
@@ -36,7 +36,7 @@ public class Linked_List{
             head = new Node(data);
         }
         else{
-            current = head
+            Node current = head;
             while (head.getNext() != null){
                 current = head.next;
             }
@@ -60,7 +60,7 @@ public class Linked_List{
             }
             count ++;
         }
-        tempTail = current.next;
+        Node tempTail = current.next;
         current.data = new Node(data);
         current.next = tempTail;
     }
@@ -76,13 +76,13 @@ public class Linked_List{
             if (current.next == null){
                 return;
             }
-            elif (current.next.next == null){
+            else if (current.next.next == null){
                 return;
             }
             current = current.next;
             count ++;
         }
-        targetNode = current.next;
+        Node targetNode = current.next;
         if (targetNode.next == null){
             current.next = null;
         }
@@ -91,28 +91,4 @@ public class Linked_List{
         }
     }
 
-}
-
-
-/* Node class */
-
-public class Node{
-    private Object data;
-    private Node next;
-
-    //constructor for a node with no next value
-    public Node(Object data){
-        this.data = data;
-        next = null;
-    }
-
-    //constructor for node with specified next value
-    public Node(Object data, Node next){
-        this.data = data;
-        this.next = next;
-    }
-
-    public Node getNext(Node head){
-        return head.next;
-    }
 }
