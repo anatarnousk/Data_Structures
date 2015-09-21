@@ -65,6 +65,32 @@ public class Linked_List{
         current.next = tempTail;
     }
 
+    //removes an element from a linked list based on index - O(n)
+    public void remove(int index){
+        if (head == null){
+            return;
+        }
+        int count = 0;
+        Node current = head;
+        while (count < (index - 1)){
+            if (current.next == null){
+                return;
+            }
+            elif (current.next.next == null){
+                return;
+            }
+            current = current.next;
+            count ++;
+        }
+        targetNode = current.next;
+        if (targetNode.next == null){
+            current.next = null;
+        }
+        else{
+            current.next = targetNode.next;
+        }
+    }
+
 }
 
 
