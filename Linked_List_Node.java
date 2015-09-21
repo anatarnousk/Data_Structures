@@ -21,8 +21,12 @@ public class Linked_List_Node{
         this.data = data;
         this.next = next;
     }
-
-    public Linked_List_Node getNext(){
-        return next;
+    
+    //toString method
+    public String toString(Linked_List_Node node){
+    	StringBuffer result = new StringBuffer();
+    	result.append("[data: ").append(data).append(", next: ").append(next).append("]");
+    	return result.toString();
     }
+    
 }
