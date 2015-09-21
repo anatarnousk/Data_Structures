@@ -19,6 +19,23 @@ public class Linked_List{
     public Linked_List(Linked_List_Node node){
         head = node;
     }
+    
+    //toString method to display the Linked List
+    public String toString(Linked_List list){
+    	StringBuffer result = new StringBuffer();
+    	result.append("[");
+    	Linked_List_Node current = head;
+    	while (head != null){
+    		if (head.next != null){
+    			result.append(current.data + "->");
+    		}
+    		else{
+    			result.append(current.data);
+    		}
+    	}
+    	result.append("]");
+    	return result.toString();
+    }
 
     //adds to the beginning of a linked list - O(1)
     public void add(Object data){
@@ -37,8 +54,8 @@ public class Linked_List{
         }
         else{
         	Linked_List_Node current = head;
-            while (head.getNext() != null){
-                current = head.next;
+            while (current.next != null){
+                current = current.next;
             }
             current.next = new Linked_List_Node(data);
         }
