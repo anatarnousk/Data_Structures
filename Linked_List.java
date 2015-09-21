@@ -8,7 +8,7 @@
 /* Linked list class */
 
 public class Linked_List{
-    private Node head;
+    private Linked_List_Node head;
 
     //constructor for an empty Linked List
     public Linked_List(){
@@ -16,31 +16,31 @@ public class Linked_List{
     }
 
     //constructor for non-empty Linked List
-    public Linked_List(Node node){
+    public Linked_List(Linked_List_Node node){
         head = node;
     }
 
     //adds to the beginning of a linked list - O(1)
     public void add(Object data){
         if (head == null){
-            head = new Node(data);
+            head = new Linked_List_Node(data);
         }
         else{
-            head = new Node(data, head);
+            head = new Linked_List_Node(data, head);
         }
     }
 
     //adds to the end of a linked list - 0(n)
     public void addToEnd(Object data){
         if (head == null){
-            head = new Node(data);
+            head = new Linked_List_Node(data);
         }
         else{
-            Node current = head;
+        	Linked_List_Node current = head;
             while (head.getNext() != null){
                 current = head.next;
             }
-            current.next = new Node(data);
+            current.next = new Linked_List_Node(data);
         }
     }
 
@@ -50,7 +50,7 @@ public class Linked_List{
             return;
         }
         int count = 0;
-        Node current = head;
+        Linked_List_Node current = head;
         while (count < (index - 1)){
             if (current.next == null){
                 return;
@@ -60,8 +60,8 @@ public class Linked_List{
             }
             count ++;
         }
-        Node tempTail = current.next;
-        current.data = new Node(data);
+        Linked_List_Node tempTail = current.next;
+        current.data = new Linked_List_Node(data);
         current.next = tempTail;
     }
 
@@ -71,7 +71,7 @@ public class Linked_List{
             return;
         }
         int count = 0;
-        Node current = head;
+        Linked_List_Node current = head;
         while (count < (index - 1)){
             if (current.next == null){
                 return;
@@ -82,13 +82,25 @@ public class Linked_List{
             current = current.next;
             count ++;
         }
-        Node targetNode = current.next;
+        Linked_List_Node targetNode = current.next;
         if (targetNode.next == null){
             current.next = null;
         }
         else{
             current.next = targetNode.next;
         }
+    }
+    
+    //finds the first occurrence of an element and returns its index
+    //if element is not found returns -1. Order O(n)
+    public int find(Object data){
+    	if (head == null){
+    		return -1;
+    	}
+    	if (head.data == data){
+    		return 0;
+    	}
+    	return 1 + (new Linked_List(head.next)).find(data);
     }
 
 }
